@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Happy 6 Months 💕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#4d3b48; --ink-soft:#8a7383; --pink:#e97f98; --pink-soft:#f8c9d4;
+    --lav:#b9a3dc; --cream:#fffaf6; --card:#fffaf7; --mustard:#eab04a;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;overflow-x:hidden}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;color:var(--ink);
+    background:linear-gradient(180deg,#fde9e3 0%,#fbeff3 45%,#efe9fa 100%);
+    background-attachment:fixed;min-height:100vh;
+  }
+  main{position:relative;z-index:2;max-width:460px;margin:0 auto;padding:18px 16px 40px}
+  h1,h2,.hand{font-family:'Caveat',cursive}
+  h1{font-size:2.6rem;line-height:1;margin:6px 0 2px;text-align:center;color:var(--pink)}
+  .sub{text-align:center;color:var(--ink-soft);margin:0 0 14px;font-weight:600}
+  h2{font-size:1.9rem;margin:0 0 6px;text-align:center;color:var(--ink)}
+  .card{background:var(--card);border-radius:26px;padding:18px;margin:16px 0;
+    box-shadow:0 10px 30px -12px rgba(160,90,120,.35),0 2px 0 rgba(255,255,255,.8) inset}
+  .muted{color:var(--ink-soft);font-size:.92rem;text-align:center;margin:4px 0 0}
+
+  button{font:inherit;cursor:pointer;border:0}
+  .btn{display:inline-flex;align-items:center;gap:8px;justify-content:center;
+    padding:12px 22px;border-radius:999px;font-weight:800;font-size:1rem;color:#fff;
+    background:linear-gradient(180deg,#f292a8,#e16f8b);box-shadow:0 6px 0 #c95773,0 10px 20px -8px rgba(200,80,110,.6);
+    transition:transform .12s, box-shadow .12s}
+  .btn:active{transform:translateY(4px);box-shadow:0 2px 0 #c95773}
+  .btn.lav{background:linear-gradient(180deg,#c9b5ea,#a990d6);box-shadow:0 6px 0 #8c73bb,0 10px 20px -8px rgba(120,90,190,.5)}
+  .btn.lav:active{box-shadow:0 2px 0 #8c73bb}
+  .center{text-align:center}
+
+  /* ---------- Intro overlay ---------- */
+  .intro-overlay{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 50% 40%,#fff4f0,#f9dbe3 70%);transition:opacity .7s, visibility .7s;padding:24px;text-align:center}
+  .intro-overlay.hide{opacity:0;visibility:hidden}
+  .intro-env{font-size:4.2rem;animation:float 2.4s ease-in-out infinite}
+  .intro-overlay p{font-family:'Caveat',cursive;font-size:2rem;margin:10px 0 22px;color:var(--ink)}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+
+  /* ---------- Scene ---------- */
+  .scene-wrap{position:relative;border-radius:22px;overflow:hidden;background:#cfe6f6}
+  .scene-wrap svg{display:block;width:100%;height:auto;touch-action:manipulation}
+  .tap{cursor:pointer}
+  .mover-k,.mover-b{transition:transform 1.5s cubic-bezier(.45,.05,.3,1)}
+  .scene.intro .mover-k{transform:translateX(-180px)}
+  .scene.intro .mover-b{transform:translateX(180px)}
+  .scene.hug .mover-k{transform:translateX(39px)}
+  .scene.hug .mover-b{transform:translateX(-39px)}
+  .scene.hug .mover-k,.scene.hug .mover-b{transition-duration:.9s}
+
+  .bob{animation:bob 2.6s ease-in-out infinite}
+  .bob-b{animation-delay:-1.3s}
+  .scene.walking .bob{animation:walk .32s ease-in-out infinite}
+  .bob.jump{animation:jump .55s cubic-bezier(.3,1.6,.5,1) 1}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+  @keyframes walk{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  @keyframes jump{0%,100%{transform:translateY(0)}40%{transform:translateY(-16px)}}
+
+  .arm-front{transform-box:fill-box;transform-origin:50% 10%;transition:transform .8s cubic-bezier(.3,1.4,.5,1)}
+  .k-arm{animation:swayK 3.2s ease-in-out infinite}
+  .b-arm{animation:swayB 3.2s ease-in-out infinite -1.6s}
+  @keyframes swayK{0%,100%{transform:rotate(0)}50%{transform:rotate(-12deg)}}
+  @keyframes swayB{0%,100%{transform:rotate(0)}50%{transform:rotate(12deg)}}
+  .scene.hug .k-arm{animation:none;transform:rotate(-80deg)}
+  .scene.hug .b-arm{animation:none;transform:rotate(78deg)}
+
+  .head{transform-box:fill-box;transform-origin:50% 92%;transition:transform .9s cubic-bezier(.3,1.3,.5,1)}
+  .scene.hug .k-head{transform:rotate(9deg)}
+  .scene.hug .b-head{transform:rotate(-10deg)}
+
+  .eyes-open{transform-box:fill-box;transform-origin:center;animation:blink 4.6s infinite;transition:opacity .25s}
+  .b-head .eyes-open{animation-delay:-2s}
+  .eyes-closed{opacity:0;transition:opacity .25s}
+  .scene.hug .eyes-open{opacity:0}
+  .scene.hug .eyes-closed{opacity:1}
+  @keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+
+  .cheek{transform-box:fill-box;transform-origin:center;transition:opacity .4s,transform .4s;opacity:.7}
+  .scene.hug .cheek,.blush .cheek{opacity:1;transform:scale(1.3)}
+
+  .ear-l{transform-box:fill-box;transform-origin:50% 100%}
+  .ear-r{transform-box:fill-box;transform-origin:0% 100%}
+  .wiggle .ear-l{animation:wigL .6s ease-in-out 2}
+  .wiggle .ear-r{animation:wigR .6s ease-in-out 2}
+  @keyframes wigL{0%,100%{transform:rotate(0)}30%{transform:rotate(-14deg)}70%{transform:rotate(10deg)}}
+  @keyframes wigR{0%,100%{transform:rotate(0)}30%{transform:rotate(12deg)}70%{transform:rotate(-8deg)}}
+
+  .cloud{animation:drift 16s ease-in-out infinite alternate}
+  .cloud.c2{animation-duration:21s;animation-delay:-6s}
+  .cloud.c3{animation-duration:26s;animation-delay:-12s}
+  @keyframes drift{from{transform:translateX(-14px)}to{transform:translateX(16px)}}
+  .spark{transform-box:fill-box;transform-origin:center;animation:twinkle 2.8s ease-in-out infinite}
+  @keyframes twinkle{0%,100%{opacity:.2;transform:scale(.6)}50%{opacity:1;transform:scale(1.1)}}
+  .sway{transform-box:fill-box;transform-origin:50% 100%;animation:sway 3.5s ease-in-out infinite}
+  @keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+
+  .bubble{position:absolute;transform:translate(-50%,-100%) scale(.6);opacity:0;pointer-events:none;
+    background:#fff;color:var(--ink);font-weight:800;font-size:.86rem;padding:7px 12px;border-radius:16px;
+    white-space:nowrap;box-shadow:0 6px 16px -6px rgba(120,60,90,.4);transition:opacity .25s,transform .35s cubic-bezier(.3,1.6,.5,1)}
+  .bubble::after{content:"";position:absolute;left:50%;bottom:-6px;width:12px;height:12px;background:#fff;transform:translateX(-50%) rotate(45deg);border-radius:2px}
+  .bubble.show{opacity:1;transform:translate(-50%,-100%) scale(1)}
+  #kBubble{left:31%;top:37%}
+  #bBubble{left:69%;top:22%}
+  .scene-actions{display:flex;justify-content:center;margin-top:14px}
+
+  /* ---------- Counter ---------- */
+  .count-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+  .count-box{background:#fdeef2;border-radius:16px;padding:10px 4px;text-align:center}
+  .count-box b{display:block;font-size:1.5rem;color:var(--pink);font-variant-numeric:tabular-nums}
+  .count-box span{font-size:.72rem;color:var(--ink-soft);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+
+  /* ---------- Envelope ---------- */
+  .envelope{position:relative;width:220px;height:140px;margin:74px auto 8px;cursor:pointer;perspective:700px}
+  .env-back,.env-front,.env-flap,.env-letter{position:absolute}
+  .env-back{inset:0;background:#eea2b3;border-radius:12px;z-index:1}
+  .env-letter{left:14px;right:14px;top:12px;height:112px;background:#fff;border-radius:8px;z-index:2;
+    display:flex;align-items:center;justify-content:center;font-family:'Caveat',cursive;font-size:1.5rem;color:var(--pink);
+    box-shadow:0 2px 8px rgba(0,0,0,.08);transition:transform .7s .35s cubic-bezier(.3,1.2,.5,1)}
+  .env-front{inset:0;background:#f7c3cf;border-radius:12px;z-index:3;clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%)}
+  .env-flap{left:0;right:0;top:0;height:84px;background:#f0aebd;z-index:4;clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top;transition:transform .55s ease, z-index 0s .28s;border-radius:12px 12px 0 0}
+  .env-seal{position:absolute;left:50%;top:66px;transform:translate(-50%,-50%);z-index:5;width:34px;height:34px;color:#d9567a;transition:opacity .2s}
+  .envelope.open .env-flap{transform:rotateX(180deg);z-index:0}
+  .envelope.open .env-seal{opacity:0}
+  .envelope.open .env-letter{transform:translateY(-64px)}
+  .envelope:not(.open){animation:nudge 2.6s ease-in-out infinite}
+  @keyframes nudge{0%,88%,100%{transform:rotate(0)}91%{transform:rotate(-3deg)}94%{transform:rotate(3deg)}97%{transform:rotate(-2deg)}}
+  .letter{max-height:0;opacity:0;overflow:hidden;transition:max-height 1.2s ease,opacity .8s ease .2s}
+  .letter.show{max-height:1400px;opacity:1}
+  .letter-paper{margin-top:12px;background:#fffdf9;border-radius:16px;padding:18px 18px 14px;
+    background-image:repeating-linear-gradient(180deg,transparent 0 31px,#f5dfe5 31px 32px);
+    font-family:'Caveat',cursive;font-size:1.45rem;line-height:32px;color:#5b4352}
+  .letter-paper p{margin:0 0 10px}
+  .sign{text-align:right}
+
+  /* ---------- Reasons ---------- */
+  .reason-card{min-height:96px;display:flex;align-items:center;justify-content:center;text-align:center;
+    background:#f4effc;border-radius:18px;padding:16px;margin:10px 0 14px;font-weight:700;font-size:1.05rem;line-height:1.4}
+  .reason-card.pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
+  @keyframes pop{0%{transform:scale(.85);opacity:.3}100%{transform:scale(1);opacity:1}}
+  .reason-num{font-size:.8rem;color:var(--ink-soft);font-weight:700;margin-top:8px}
+
+  /* ---------- Question ---------- */
+  .q-area{position:relative;height:150px;margin-top:6px}
+  #yesBtn{position:absolute;left:14%;top:46px;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+  #noBtn{position:absolute;left:58%;top:46px;transition:left .25s ease, top .25s ease;
+    background:#fff;color:var(--ink-soft);box-shadow:0 4px 0 #e6d6dd}
+  .yay{display:none;text-align:center;font-family:'Caveat',cursive;font-size:2rem;color:var(--pink);margin-top:4px;animation:pop .5s}
+  .yay.show{display:block}
+
+  footer{text-align:center;color:var(--ink-soft);font-size:.9rem;margin-top:22px}
+
+  /* ---------- Effects ---------- */
+  .fx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
+  .fx-heart{position:absolute;transform:translate(-50%,-50%);animation:floatUp var(--dur) ease-out forwards}
+  @keyframes floatUp{
+    0%{opacity:0;transform:translate(-50%,-50%) scale(.3)}
+    15%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+    100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.9) rotate(var(--rot))}}
+  .petals{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+  .petal{position:absolute;top:-20px;width:11px;height:13px;border-radius:80% 0 80% 0;
+    background:linear-gradient(135deg,#ffd3de,#f5a1b6);opacity:.75;animation:fall linear infinite}
+  @keyframes fall{0%{transform:translate(0,-20px) rotate(0)}100%{transform:translate(60px,110vh) rotate(540deg)}}
+
+  @media (prefers-reduced-motion: reduce){
+    .bob,.cloud,.spark,.sway,.petal,.k-arm,.b-arm,.envelope,.intro-env{animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="intro-overlay" id="intro">
+  <div class="intro-env">💌</div>
+  <p id="introText">A little something for you…</p>
+  <button class="btn" id="openBtn">Tap to open 💕</button>
+</div>
+
+<div class="petals" id="petals"></div>
+<div class="fx" id="fx"></div>
+
+<main>
+  <h1 id="title">Happy 6 Months!</h1>
+
+  <!-- ====== Scene ====== -->
+  <section class="card" style="padding:12px">
+    <div class="scene-wrap">
+      <svg id="scene" class="scene intro" viewBox="0 0 360 290" aria-label="A koala and a bunny hugging">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#a8d4f2"/>
+            <stop offset=".6" stop-color="#f6e2e0"/>
+            <stop offset="1" stop-color="#ffd9cc"/>
+          </linearGradient>
+          <radialGradient id="sunGlow">
+            <stop offset="0" stop-color="#fff6d8"/>
+            <stop offset=".5" stop-color="#fff1c4" stop-opacity=".7"/>
+            <stop offset="1" stop-color="#fff1c4" stop-opacity="0"/>
+          </radialGradient>
+          <g id="flower">
+            <circle cx="0" cy="-3.6" r="2.8"/><circle cx="3.4" cy="-1.1" r="2.8"/><circle cx="2.1" cy="2.9" r="2.8"/>
+            <circle cx="-2.1" cy="2.9" r="2.8"/><circle cx="-3.4" cy="-1.1" r="2.8"/>
+            <circle cx="0" cy="0" r="1.9" fill="#ffd36e"/>
+          </g>
+          <path id="heartShape" d="M0 5 C -7 0 -7 -5 -3.5 -6 C -1.6 -6.4 0 -5 0 -3.4 C 0 -5 1.6 -6.4 3.5 -6 C 7 -5 7 0 0 5Z"/>
+        </defs>
+
+        <!-- sky -->
+        <rect width="360" height="290" fill="url(#sky)"/>
+        <circle cx="318" cy="30" r="40" fill="url(#sunGlow)"/>
+        <circle cx="318" cy="30" r="16" fill="#fff4cf"/>
+
+        <!-- clouds -->
+        <g class="cloud" fill="#fff" opacity=".92">
+          <ellipse cx="56" cy="38" rx="28" ry="12"/><circle cx="46" cy="31" r="13"/><circle cx="66" cy="27" r="16"/><circle cx="82" cy="36" r="10"/>
+        </g>
+        <g class="cloud c2" fill="#fff" opacity=".85">
+          <ellipse cx="200" cy="30" rx="24" ry="10"/><circle cx="192" cy="24" r="11"/><circle cx="208" cy="21" r="13"/>
+        </g>
+        <g class="cloud c3" fill="#fff" opacity=".75">
+          <ellipse cx="128" cy="14" rx="18" ry="7"/><circle cx="122" cy="10" r="8"/><circle cx="134" cy="8" r="9"/>
+        </g>
+
+        <!-- sparkles -->
+        <g fill="#fff">
+          <circle class="spark" cx="150" cy="44" r="2"/>
+          <circle class="spark" cx="262" cy="40" r="1.6" style="animation-delay:-1s"/>
+          <circle class="spark" cx="20" cy="62" r="1.8" style="animation-delay:-2s"/>
+          <circle class="spark" cx="100" cy="56" r="1.4" style="animation-delay:-.5s"/>
+        </g>
+
+        <!-- Moreton Bay figs either side -->
+        <g fill="#5f8f5a">
+          <circle cx="4" cy="118" r="34"/><circle cx="26" cy="96" r="26"/><circle cx="-4" cy="160" r="30"/><circle cx="20" cy="150" r="24"/>
+          <circle cx="356" cy="118" r="34"/><circle cx="334" cy="96" r="26"/><circle cx="364" cy="160" r="30"/><circle cx="340" cy="150" r="24"/>
+        </g>
+        <g fill="#74a86f" opacity=".8">
+          <circle cx="22" cy="92" r="12"/><circle cx="6" cy="128" r="10"/><circle cx="338" cy="92" r="12"/><circle cx="354" cy="128" r="10"/>
+        </g>
+
+        <!-- ===== Art Gallery of NSW (stylised sandstone facade) ===== -->
+        <g>
+          <!-- wings -->
+          <rect x="24" y="92" width="312" height="112" fill="#ead1a1"/>
+          <rect x="24" y="92" width="312" height="8" fill="#dcc08d" opacity=".6"/>
+          <g fill="#dcbd88">
+            <rect x="40" y="112" width="34" height="62" rx="1"/>
+            <rect x="286" y="112" width="34" height="62" rx="1"/>
+          </g>
+          <!-- wing entablature + cornice -->
+          <rect x="18" y="80" width="324" height="14" fill="#e3c590"/>
+          <line x1="18" y1="87" x2="342" y2="87" stroke="#cfae78" stroke-width="1"/>
+          <rect x="14" y="74" width="332" height="7" rx="1.5" fill="#f2ddb3"/>
+          <!-- portico entablature with engraved frieze -->
+          <rect x="94" y="68" width="172" height="20" fill="#e7cb96"/>
+          <rect x="90" y="62" width="180" height="7" rx="1.5" fill="#f5e2bc"/>
+          <g fill="#c9a872" opacity=".75">
+            <rect x="104" y="76" width="18" height="3" rx="1"/><rect x="128" y="76" width="22" height="3" rx="1"/>
+            <rect x="156" y="76" width="16" height="3" rx="1"/><rect x="188" y="76" width="22" height="3" rx="1"/>
+            <rect x="216" y="76" width="16" height="3" rx="1"/><rect x="238" y="76" width="18" height="3" rx="1"/>
+          </g>
+          <!-- shaded portico recess + doorway -->
+          <rect x="98" y="88" width="164" height="102" fill="#caa974"/>
+          <path d="M168 190 V142 Q180 128 192 142 V190Z" fill="#7a6146"/>
+          <!-- Ionic columns -->
+          <g id="col">
+            <rect x="107" y="93" width="10" height="92" fill="#f3dfb5"/>
+            <rect x="114" y="93" width="3" height="92" fill="#e0c592"/>
+            <rect x="104" y="88" width="16" height="5" rx="1" fill="#f6e4c0"/>
+            <circle cx="105" cy="92" r="2.6" fill="#e6cc9a"/><circle cx="119" cy="92" r="2.6" fill="#e6cc9a"/>
+            <rect x="105" y="184" width="14" height="5" rx="1" fill="#f0dbb0"/>
+          </g>
+          <use href="#col" x="27"/><use href="#col" x="54"/><use href="#col" x="82"/><use href="#col" x="109"/><use href="#col" x="136"/>
+          <!-- steps -->
+          <rect x="18" y="198" width="324" height="8" fill="#d8b884"/>
+          <rect x="86" y="189" width="188" height="6" fill="#f0dbb0"/>
+          <rect x="78" y="195" width="204" height="6" fill="#e4c996"/>
+          <rect x="70" y="201" width="220" height="6" fill="#f0dbb0"/>
+        </g>
+
+        <!-- bronze horse-and-rider statues on plinths -->
+        <g id="statue" transform="translate(52 0)">
+          <rect x="-14" y="164" width="28" height="42" fill="#dcc7a2"/>
+          <rect x="-17" y="160" width="34" height="5" rx="1" fill="#e9d6b2"/>
+          <g fill="#56604f">
+            <ellipse cx="0" cy="146" rx="12" ry="5.5"/>
+            <path d="M8 144 Q14 132 17 129 L20 132 Q16 137 12 147Z"/>
+            <ellipse cx="18.5" cy="130" rx="4" ry="2.4" transform="rotate(25 18.5 130)"/>
+            <path d="M-11 145 Q-17 148 -16 155" stroke="#56604f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <rect x="-9" y="149" width="2.4" height="11" rx="1"/><rect x="-4" y="149" width="2.4" height="11" rx="1"/>
+            <rect x="4" y="149" width="2.4" height="11" rx="1"/><rect x="8.5" y="148" width="2.4" height="12" rx="1" transform="rotate(-12 9.7 148)"/>
+            <path d="M-3 141 L-1 128 L4 128 L4 141Z"/>
+            <circle cx="1.5" cy="125" r="3.2"/>
+          </g>
+        </g>
+        <use href="#statue" transform="translate(360 0) scale(-1 1)"/>
+
+        <!-- forecourt + lawn -->
+        <rect x="0" y="206" width="360" height="84" fill="#dcd0ba"/>
+        <path d="M0 214 H360" stroke="#cdbfa6" stroke-width="1.5"/>
+        <path d="M0 246 Q180 234 360 246 V290 H0Z" fill="#8fc28a"/>
+        <path d="M0 266 Q180 256 360 266 V290 H0Z" fill="#82b77c"/>
+
+        <!-- lawn flowers -->
+        <g class="sway"><use href="#flower" x="24" y="258" fill="#ffd0dc"/></g>
+        <g class="sway" style="animation-delay:-1s"><use href="#flower" x="62" y="276" fill="#fff"/></g>
+        <g class="sway" style="animation-delay:-2s"><use href="#flower" x="300" y="274" fill="#e9d8ff"/></g>
+        <g class="sway" style="animation-delay:-.6s"><use href="#flower" x="338" y="256" fill="#ffd0dc"/></g>
+        <g class="sway" style="animation-delay:-1.6s"><use href="#flower" x="186" y="280" fill="#fff"/></g>
+
+        <!-- ===== KOALA (body + head) ===== -->
+        <g transform="translate(110 0)">
+          <g class="mover-k"><g class="bob bob-k tap" data-who="koala">
+            <ellipse cx="0" cy="262" rx="34" ry="6" fill="#5e8f59" opacity=".35"/>
+            <!-- back arm -->
+            <g transform="rotate(14 -24 188)">
+              <rect x="-32" y="186" width="15" height="40" rx="7.5" fill="#9aa1af"/>
+              <rect x="-33" y="184" width="17" height="16" rx="6" fill="#e9e2d2"/>
+              <circle cx="-24.5" cy="226" r="7.5" fill="#9aa1af"/>
+            </g>
+            <!-- cream pants -->
+            <ellipse cx="-14" cy="249" rx="12.5" ry="12" fill="#ebe4d4"/>
+            <ellipse cx="14" cy="249" rx="12.5" ry="12" fill="#ebe4d4"/>
+            <ellipse cx="-14" cy="259" rx="9" ry="4" fill="#8e95a3"/>
+            <ellipse cx="14" cy="259" rx="9" ry="4" fill="#8e95a3"/>
+            <!-- cream tee -->
+            <path d="M -30 207 Q -32 173 0 171 Q 32 173 30 207 Q 32 253 0 253 Q -32 253 -30 207 Z" fill="#f4efe4"/>
+            <path d="M -28 240 Q 0 249 28 240" stroke="#e4dccb" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M -12 174 Q 0 182 12 174" stroke="#e1d9c7" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- small green chest print -->
+            <rect x="4" y="206" width="16" height="3" rx="1.2" fill="#3f6b4f"/>
+            <rect x="7" y="211" width="10" height="1.6" rx=".8" fill="#3f6b4f" opacity=".8"/>
+            <!-- head -->
+            <g class="head k-head">
+              <circle cx="-37" cy="124" r="23" fill="#9aa1af"/>
+              <circle cx="-37" cy="126" r="13" fill="#f3d0d8"/>
+              <circle cx="37" cy="124" r="23" fill="#9aa1af"/>
+              <circle cx="37" cy="126" r="13" fill="#f3d0d8"/>
+              <ellipse cx="0" cy="152" rx="40" ry="35" fill="#aab0bd"/>
+              <path d="M -12 122 Q -12 108 -4 116 Q -1 98 5 113 Q 10 101 13 116 Q 16 112 14 123 Z" fill="#8f96a4"/>
+              <ellipse cx="0" cy="169" rx="20" ry="13" fill="#cdd2db"/>
+              <g class="eyes-open">
+                <ellipse cx="-17" cy="146" rx="5" ry="5.6" fill="#2f2a33"/>
+                <ellipse cx="17" cy="146" rx="5" ry="5.6" fill="#2f2a33"/>
+                <circle cx="-15.4" cy="144" r="1.9" fill="#fff"/>
+                <circle cx="18.6" cy="144" r="1.9" fill="#fff"/>
+              </g>
+              <g class="eyes-closed" stroke="#2f2a33" stroke-width="2.4" fill="none" stroke-linecap="round">
+                <path d="M -22 147 Q -17 141 -12 147"/><path d="M 12 147 Q 17 141 22 147"/>
+              </g>
+              <ellipse class="cheek" cx="-27" cy="163" rx="7" ry="4.5" fill="#f5a3b4"/>
+              <ellipse class="cheek" cx="27" cy="163" rx="7" ry="4.5" fill="#f5a3b4"/>
+              <ellipse cx="0" cy="160" rx="10" ry="12.5" fill="#3b3640"/>
+              <ellipse cx="-3" cy="154.5" rx="3" ry="2" fill="#fff" opacity=".5"/>
+              <path d="M -5 175 Q 0 180 5 175" stroke="#3b3640" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </g>
+          </g></g>
+        </g>
+
+        <!-- ===== BUNNY (body + head) ===== -->
+        <g transform="translate(250 0)">
+          <g class="mover-b"><g class="bob bob-b tap" data-who="bunny">
+            <ellipse cx="0" cy="262" rx="30" ry="6" fill="#5e8f59" opacity=".35"/>
+            <!-- tail -->
+            <circle cx="27" cy="230" r="10" fill="#fffaf6" stroke="#eadbd2" stroke-width="1.5"/>
+            <!-- back arm -->
+            <g transform="rotate(-14 22 189)">
+              <rect x="15.5" y="188" width="13" height="38" rx="6.5" fill="#fff6f0" stroke="#eadbd2" stroke-width="1.2"/>
+              <circle cx="22" cy="190" r="8.5" fill="#fbfcff" stroke="#9db3e8" stroke-width="1.2"/>
+            </g>
+            <!-- feet -->
+            <ellipse cx="-12" cy="254" rx="12" ry="7" fill="#fff6f0" stroke="#eadbd2" stroke-width="1.2"/>
+            <ellipse cx="12" cy="254" rx="12" ry="7" fill="#fff6f0" stroke="#eadbd2" stroke-width="1.2"/>
+            <!-- white dress with blue floral print -->
+            <path d="M -17 180 Q -22 202 -33 246 Q 0 256 33 246 Q 22 202 17 180 Z" fill="#fbfcff" stroke="#dfe6f6" stroke-width="1"/>
+            <g fill="#5d82d4" opacity=".85">
+              <use href="#flower" transform="translate(-8 206) scale(.8)"/>
+              <use href="#flower" transform="translate(10 222) scale(.9)"/>
+              <use href="#flower" transform="translate(-16 234) scale(.75)"/>
+              <use href="#flower" transform="translate(16 240) scale(.6)"/>
+              <use href="#flower" transform="translate(4 200) scale(.55)"/>
+            </g>
+            <g fill="#9db3e8" opacity=".8">
+              <ellipse cx="2" cy="232" rx="4" ry="1.8" transform="rotate(-30 2 232)"/>
+              <ellipse cx="-4" cy="218" rx="3.5" ry="1.6" transform="rotate(25 -4 218)"/>
+              <ellipse cx="20" cy="208" rx="3" ry="1.5" transform="rotate(-20 20 208)"/>
+              <ellipse cx="-22" cy="244" rx="3" ry="1.4"/>
+            </g>
+            <path d="M -32 244 Q 0 254 32 244" stroke="#9db3e8" stroke-width="1.2" fill="none"/>
+            <!-- sweetheart neckline with little tie -->
+            <path d="M -13 181 Q -6 188 0 184 Q 6 188 13 181" stroke="#c9d5ef" stroke-width="1.4" fill="none"/>
+            <path d="M 0 185 l -3 3 M 0 185 l 3 3 M 0 185 v 9" stroke="#9db3e8" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+            <!-- black knit cardigan draped over shoulders -->
+            <path d="M -23 178 Q 0 187 23 178 Q 28 183 26 191 Q 0 198 -26 191 Q -28 183 -23 178 Z" fill="#2e2a31"/>
+            <path d="M -22 188 Q -28 208 -24 230 L -16 231 Q -18 208 -12 192 Z" fill="#2e2a31"/>
+            <path d="M 22 188 Q 28 208 24 230 L 16 231 Q 18 208 12 192 Z" fill="#2e2a31"/>
+            <g stroke="#48424c" stroke-width=".9">
+              <path d="M -18 183 v 9 M -12 185 v 9 M -6 186 v 9 M 0 186.5 v 9 M 6 186 v 9 M 12 185 v 9 M 18 183 v 9"/>
+              <path d="M -20 196 Q -23 212 -20 228 M 20 196 Q 23 212 20 228"/>
+            </g>
+            <!-- heart necklace -->
+            <path d="M -7 181 Q 0 192 7 181" stroke="#d6dae2" stroke-width=".9" fill="none"/>
+            <use href="#heartShape" transform="translate(0 191) scale(.32)" fill="#e3e7ee" stroke="#b8bfcb" stroke-width="1.5"/>
+            <!-- head -->
+            <g class="head b-head">
+              <g class="ear-l">
+                <ellipse cx="-13" cy="98" rx="10" ry="32" transform="rotate(-8 -13 98)" fill="#fff6f0" stroke="#eadbd2" stroke-width="1.5"/>
+                <ellipse cx="-13" cy="101" rx="5" ry="23" transform="rotate(-8 -13 101)" fill="#f7c3cf"/>
+              </g>
+              <g class="ear-r">
+                <path d="M 5 128 C 7 98 22 78 38 81 C 50 84 47 98 35 108 C 26 116 20 123 18 131 Z" fill="#fff6f0" stroke="#eadbd2" stroke-width="1.5"/>
+                <path d="M 11 124 C 13 102 24 89 35 89 C 41 90 40 98 32 105 C 25 111 20 117 18 124 Z" fill="#f7c3cf"/>
+              </g>
+              <ellipse cx="0" cy="154" rx="33" ry="30" fill="#fff6f0" stroke="#eadbd2" stroke-width="1.5"/>
+              <!-- sunglasses perched on her head -->
+              <g>
+                <path d="M -24 132 Q 0 122 24 132" stroke="#2b2830" stroke-width="1.6" fill="none"/>
+                <ellipse cx="-11" cy="129" rx="9" ry="6" fill="#2b2830"/>
+                <ellipse cx="11" cy="129" rx="9" ry="6" fill="#2b2830"/>
+                <path d="M -3 127 Q 0 125 3 127" stroke="#2b2830" stroke-width="1.8" fill="none"/>
+                <ellipse cx="-14" cy="127" rx="3" ry="1.4" fill="#fff" opacity=".35"/>
+                <ellipse cx="8" cy="127" rx="3" ry="1.4" fill="#fff" opacity=".35"/>
+              </g>
+              <g class="eyes-open">
+                <ellipse cx="-12" cy="150" rx="4.6" ry="5.2" fill="#2f2a33"/>
+                <ellipse cx="12" cy="150" rx="4.6" ry="5.2" fill="#2f2a33"/>
+                <circle cx="-10.6" cy="148" r="1.8" fill="#fff"/>
+                <circle cx="13.4" cy="148" r="1.8" fill="#fff"/>
+                <path d="M -16.5 146.5 l -3 -2.5 M 16.5 146.5 l 3 -2.5" stroke="#2f2a33" stroke-width="1.4" stroke-linecap="round"/>
+              </g>
+              <g class="eyes-closed" stroke="#2f2a33" stroke-width="2.2" fill="none" stroke-linecap="round">
+                <path d="M -16.5 151 Q -12 145 -7.5 151"/><path d="M 7.5 151 Q 12 145 16.5 151"/>
+              </g>
+              <ellipse class="cheek" cx="-21" cy="162" rx="6.5" ry="4" fill="#f7a9bb"/>
+              <ellipse class="cheek" cx="21" cy="162" rx="6.5" ry="4" fill="#f7a9bb"/>
+              <path d="M -3.5 159.5 Q 0 156.5 3.5 159.5 Q 0 163.5 -3.5 159.5 Z" fill="#f08aa2"/>
+              <path d="M -5 165.5 Q -2.5 168.5 0 165.5 Q 2.5 168.5 5 165.5" stroke="#c97b8b" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+            </g>
+          </g></g>
+        </g>
+
+        <!-- ===== Front arms (drawn last so they wrap around each other) ===== -->
+        <g transform="translate(110 0)">
+          <g class="mover-k"><g class="bob bob-k tap" data-who="koala">
+            <g class="arm-front k-arm">
+              <rect x="17" y="186" width="15" height="44" rx="7.5" fill="#9aa1af"/>
+              <rect x="16" y="184" width="17" height="17" rx="6" fill="#f4efe4"/>
+              <rect x="16" y="197" width="17" height="2.5" fill="#e4dccb"/>
+              <circle cx="24.5" cy="230" r="7.8" fill="#9aa1af"/>
+            </g>
+          </g></g>
+        </g>
+        <g transform="translate(250 0)">
+          <g class="mover-b"><g class="bob bob-b tap" data-who="bunny">
+            <g class="arm-front b-arm">
+              <rect x="-27.5" y="188" width="13" height="40" rx="6.5" fill="#fff6f0" stroke="#eadbd2" stroke-width="1.2"/>
+              <circle cx="-21" cy="190" r="8.5" fill="#fbfcff" stroke="#9db3e8" stroke-width="1.2"/>
+              <path d="M -29 186 Q -21 180 -13 186 L -14 192 Q -21 188 -28 192 Z" fill="#2e2a31"/>
+            </g>
+          </g></g>
+        </g>
+      </svg>
+      <div class="bubble" id="kBubble"></div>
+      <div class="bubble" id="bBubble"></div>
+    </div>
+    <div class="scene-actions"><button class="btn" id="hugBtn">Send a hug 🤗</button></div>
+    <p class="muted">psst… try tapping the koala and the bunny</p>
+  </section>
+
+  <!-- ====== Counter ====== -->
+  <section class="card">
+    <h2>Our time together</h2>
+    <div class="count-grid">
+      <div class="count-box"><b id="cDays">0</b><span>days</span></div>
+      <div class="count-box"><b id="cHours">0</b><span>hours</span></div>
+      <div class="count-box"><b id="cMins">0</b><span>mins</span></div>
+      <div class="count-box"><b id="cSecs">0</b><span>secs</span></div>
+    </div>
+  </section>
+
+  <!-- ====== Letter ====== -->
+  <section class="card">
+    <h2>A letter for you</h2>
+    <div class="envelope" id="envelope" role="button" aria-label="Open the letter">
+      <div class="env-back"></div>
+      <div class="env-letter">for you 💗</div>
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+      <svg class="env-seal" viewBox="-8 -8 16 16"><use href="#heartShape" fill="currentColor"/></svg>
+    </div>
+    <p class="muted" id="envHint">tap the envelope</p>
+    <div class="letter" id="letter"><div class="letter-paper" id="letterPaper"></div></div>
+  </section>
+
+  <!-- ====== Question ====== -->
+  <section class="card center">
+    <h2 id="qText">Will you be my bunny for the next 6 months?</h2>
+    <div class="q-area" id="qArea">
+      <button class="btn" id="yesBtn">Yes! 💕</button>
+      <button class="btn" id="noBtn">No</button>
+    </div>
+    <div class="yay" id="yay">Yay! Best girlfriend ever 💕</div>
+  </section>
+
+  <footer id="footer">Made with love, maybe some AI and lots of eucalyptus by your Koala 🐨</footer>
+</main>
+
+<script>
+/* ============================================================
+   ✏️  EDIT THESE TO PERSONALISE THE PAGE
+   ============================================================ */
+const CONFIG = {
+  startDate: "2026-04-13T17:00:00",   // 5pm, 13 April 2026 — when we became official
+  letter: [
+    "Happy 6 months Bunny! 🐰",
+    "Look forward to spending an amazing Aussie summer with you! Our first summer together! Summer in Aus is Koala's favourite",
+  ],
+  signoff: "From your Koala 🐨",
+  koalaLines: ["I love you!", "Hug please? 🥺", "6 months already?!", "You're my favourite 💛"],
+  bunnyLines: ["Love you more!", "Hehe 💕", "My koala!", "Carrots > eucalyptus 🥕"],
+};
+/* ============================================================ */
+
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const scene = $("#scene");
+const fx = $("#fx");
+
+/* ---------- personalise text ---------- */
+$("#letterPaper").innerHTML =
+  CONFIG.letter.map((p) => `<p>${p}</p>`).join("") + `<p class="sign">${CONFIG.signoff}</p>`;
+
+/* ---------- hearts ---------- */
+const HEART = '<svg viewBox="0 0 24 24" width="100%" height="100%"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.8 4.5c2.1 0 3.6 1.2 5.2 3 1.6-1.8 3.1-3 5.2-3 3.8 0 5.9 3.9 4.4 7.3C19.5 16.4 12 21 12 21z"/></svg>';
+const COLORS = ["#e97f98", "#f5a1b6", "#c9b5ea", "#ff8fab", "#f7c3cf"];
+function heart(x, y, o = {}) {
+  const el = document.createElement("div");
+  el.className = "fx-heart";
+  const size = o.size || 16 + Math.random() * 14;
+  const dur = o.dur || 1400 + Math.random() * 900;
+  Object.assign(el.style, { left: x + "px", top: y + "px", width: size + "px", height: size + "px",
+    color: o.color || COLORS[(Math.random() * COLORS.length) | 0] });
+  el.style.setProperty("--dx", (o.dx ?? (Math.random() * 120 - 60)) + "px");
+  el.style.setProperty("--dy", (o.dy ?? -(90 + Math.random() * 110)) + "px");
+  el.style.setProperty("--rot", (Math.random() * 60 - 30) + "deg");
+  el.style.setProperty("--dur", dur + "ms");
+  el.innerHTML = HEART;
+  fx.appendChild(el);
+  setTimeout(() => el.remove(), dur + 80);
+}
+function burst(x, y, n = 14) { for (let i = 0; i < n; i++) setTimeout(() => heart(x, y), i * 45); }
+function rain(n = 40) {
+  for (let i = 0; i < n; i++) setTimeout(() =>
+    heart(Math.random() * innerWidth, -20, { dx: Math.random() * 80 - 40, dy: innerHeight + 60, dur: 2600 + Math.random() * 1600 }), i * 70);
+}
+function scenePoint(sx, sy) {
+  const r = scene.getBoundingClientRect();
+  return [r.left + (r.width * sx) / 360, r.top + (r.height * sy) / 290];
+}
+
+/* ---------- ambient petals ---------- */
+if (!reduceMotion) {
+  const petals = $("#petals");
+  for (let i = 0; i < 12; i++) {
+    const p = document.createElement("div");
+    p.className = "petal";
+    p.style.left = Math.random() * 100 + "%";
+    p.style.animationDuration = 10 + Math.random() * 10 + "s";
+    p.style.animationDelay = -Math.random() * 20 + "s";
+    p.style.transform = `scale(${0.6 + Math.random() * 0.7})`;
+    petals.appendChild(p);
+  }
+}
+
+/* ---------- hugging ---------- */
+let hugging = false, hugTimer;
+function hug(duration = 3400) {
+  if (hugging) return;
+  hugging = true;
+  scene.classList.add("hug");
+  $("#hugBtn").textContent = "Aww 🥰";
+  setTimeout(() => { const [x, y] = scenePoint(180, 120); burst(x, y, 16); }, 650);
+  clearTimeout(hugTimer);
+  hugTimer = setTimeout(() => {
+    scene.classList.remove("hug");
+    hugging = false;
+    $("#hugBtn").textContent = "Hug again 🤗";
+  }, duration);
+}
+$("#hugBtn").addEventListener("click", () => hug());
+
+/* ---------- tapping characters ---------- */
+const lineIdx = { koala: 0, bunny: 0 };
+const bubbleTimers = {};
+function say(who) {
+  const b = who === "koala" ? $("#kBubble") : $("#bBubble");
+  const lines = who === "koala" ? CONFIG.koalaLines : CONFIG.bunnyLines;
+  b.textContent = lines[lineIdx[who]++ % lines.length];
+  b.classList.add("show");
+  clearTimeout(bubbleTimers[who]);
+  bubbleTimers[who] = setTimeout(() => b.classList.remove("show"), 1800);
+}
+function jump(who) {
+  const groups = $$(who === "koala" ? ".bob-k" : ".bob-b");
+  groups.forEach((g) => { g.classList.remove("jump"); void g.getBoundingClientRect(); g.classList.add("jump"); });
+  setTimeout(() => groups.forEach((g) => g.classList.remove("jump")), 600);
+}
+$$(".tap").forEach((g) => g.addEventListener("click", (e) => {
+  e.stopPropagation();
+  const who = g.dataset.who;
+  say(who);
+  jump(who);
+  if (who === "bunny") {
+    scene.classList.remove("wiggle"); void scene.getBoundingClientRect(); scene.classList.add("wiggle");
+    setTimeout(() => scene.classList.remove("wiggle"), 1300);
+  } else {
+    scene.classList.add("blush"); setTimeout(() => scene.classList.remove("blush"), 1500);
+  }
+  burst(e.clientX, e.clientY, 5);
+}));
+
+/* ---------- tap anywhere for a heart ---------- */
+document.addEventListener("pointerdown", (e) => {
+  if (e.target.closest("button, .envelope, .tap, .intro-overlay")) return;
+  heart(e.clientX, e.clientY, { size: 18 });
+});
+
+/* ---------- counter ---------- */
+const start = new Date(CONFIG.startDate);
+function tick() {
+  let s = Math.max(0, Math.floor((Date.now() - start) / 1000));
+  const d = Math.floor(s / 86400); s %= 86400;
+  const h = Math.floor(s / 3600); s %= 3600;
+  const m = Math.floor(s / 60); s %= 60;
+  $("#cDays").textContent = d.toLocaleString();
+  $("#cHours").textContent = h;
+  $("#cMins").textContent = m;
+  $("#cSecs").textContent = s;
+}
+tick(); setInterval(tick, 1000);
+
+/* ---------- envelope ---------- */
+$("#envelope").addEventListener("click", (e) => {
+  const env = $("#envelope");
+  if (env.classList.contains("open")) return;
+  env.classList.add("open");
+  $("#envHint").textContent = "";
+  burst(e.clientX, e.clientY, 10);
+  setTimeout(() => $("#letter").classList.add("show"), 900);
+});
+
+/* ---------- the question ---------- */
+let dodges = 0, yesScale = 1;
+const noBtn = $("#noBtn"), yesBtn = $("#yesBtn"), qArea = $("#qArea");
+const noTexts = ["No", "Are you sure?", "Really?? 🥺", "Think again!", "Nope, can't click me", "Fine… Yes 💕"];
+function dodge(e) {
+  if (dodges >= noTexts.length - 1) return;
+  e.preventDefault();
+  dodges++;
+  noBtn.textContent = noTexts[dodges];
+  const maxX = qArea.clientWidth - noBtn.offsetWidth;
+  const maxY = qArea.clientHeight - noBtn.offsetHeight;
+  noBtn.style.left = Math.max(0, Math.random() * maxX) + "px";
+  noBtn.style.top = Math.max(0, Math.random() * maxY) + "px";
+  yesScale = Math.min(1.5, yesScale + 0.1);
+  yesBtn.style.transform = `scale(${yesScale})`;
+}
+noBtn.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") dodge(e); });
+noBtn.addEventListener("pointerdown", dodge);
+noBtn.addEventListener("click", (e) => { if (dodges >= noTexts.length - 1) sayYes(); });
+function sayYes() {
+  $("#yay").classList.add("show");
+  qArea.style.display = "none";
+  $("#qText").textContent = "She said yes!! 🥹";
+  rain(50);
+  scene.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+  setTimeout(() => hug(4200), 500);
+}
+yesBtn.addEventListener("click", sayYes);
+
+/* ---------- intro ---------- */
+$("#openBtn").addEventListener("click", (e) => {
+  burst(e.clientX, e.clientY, 12);
+  $("#intro").classList.add("hide");
+  if (reduceMotion) { scene.classList.remove("intro"); return; }
+  setTimeout(() => {
+    scene.classList.add("walking");
+    scene.classList.remove("intro");
+    setTimeout(() => { scene.classList.remove("walking"); setTimeout(() => hug(), 400); }, 1500);
+  }, 500);
+});
+</script>
+</body>
+</html>
